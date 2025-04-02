@@ -1,0 +1,22 @@
+{
+  "name": "cosmic-collector",
+  "version": "1.0.0",
+  "description": "Welcome to Cosmic Collector, a clicker game where you gather stardust to power a cosmic engine! Start by clicking the **Stardust Node** to collect stardust. Use your stardust to buy upgrades and unlock powerful boosts!",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx mix watch"
+  },
+  "author": "Dalton F",
+  "license": "MIT",
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.1.1",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.23.0",
+    "eslint": "^9.23.0",
+    "globals": "^16.0.0",
+    "laravel-mix": "^6.0.49"
+  }
+}
