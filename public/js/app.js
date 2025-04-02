@@ -20,7 +20,22 @@ __webpack_require__.r(__webpack_exports__);
   \***********************/
 /***/ (() => {
 
-console.log("Hello World!");
+var BACKGROUND_STAR_SIZE = 2;
+var BACKGROUND_STAR_COUNT = 500;
+var BACKGROUND_STAR_COLOR = "#fff";
+var backgroundCanvas = document.getElementById("canvas-background");
+var ctx = backgroundCanvas.getContext("2d");
+backgroundCanvas.width = window.innerWidth;
+backgroundCanvas.height = window.innerHeight;
+var generateStars = function generateStars(count) {
+  for (var i = 0; i < count; i++) {
+    var x = Math.random() * backgroundCanvas.width;
+    var y = Math.random() * backgroundCanvas.height;
+    ctx.fillStyle = BACKGROUND_STAR_COLOR;
+    ctx.fillRect(x, y, BACKGROUND_STAR_SIZE, BACKGROUND_STAR_SIZE);
+  }
+};
+generateStars(BACKGROUND_STAR_COUNT);
 
 /***/ })
 
