@@ -36,6 +36,49 @@ var generateStars = function generateStars(count) {
   }
 };
 generateStars(BACKGROUND_STAR_COUNT);
+var MIN_ANOMALY_SEGMENTS = 4;
+var MAX_ANOMALY_SEGMENTS = 7;
+var drawCosmicAnomaly = function drawCosmicAnomaly(x, y) {
+  var anomalyMaxSize = Math.random() * 50 + 30;
+  var anomalyColor = "rgb(".concat(Math.random() * 255, ", ").concat(Math.random() * 255, ", ").concat(Math.random() * 255, ")");
+  var currentSize = 0;
+
+  // Animates the anomaly to grow in size
+  var _growIn = function growIn() {
+    currentSize += anomalyMaxSize * 0.03;
+    ctx.filter = "blur(5px)";
+    ctx.beginPath();
+
+    // Generate a random amount of sides between 4 and 7 for each anomaly
+    var segments = Math.floor(Math.random() * (MAX_ANOMALY_SEGMENTS - MIN_ANOMALY_SEGMENTS + 1)) + MIN_ANOMALY_SEGMENTS;
+
+    // Create a random shape by drawing lines to random points
+    for (var i = 0; i < segments; i++) {
+      var angle = i / segments * 2 * Math.PI;
+      // Vary the radius
+      var radius = Math.random() * currentSize;
+      var pointX = x + Math.cos(angle) * radius;
+      var pointY = y + Math.sin(angle) * radius;
+      if (i === 0) ctx.moveTo(pointX, pointY);else ctx.lineTo(pointX, pointY);
+    }
+    ctx.closePath();
+
+    // Fill the shape with the anomaly color
+    ctx.fillStyle = anomalyColor;
+    ctx.fill();
+    if (currentSize < anomalyMaxSize) requestAnimationFrame(_growIn);
+  };
+  _growIn();
+};
+
+// Draw a cosmic anomaly on a random point of the canvas
+var triggerCosmicAnomaly = function triggerCosmicAnomaly() {
+  var x = Math.random() * backgroundCanvas.width;
+  var y = Math.random() * backgroundCanvas.height;
+  drawCosmicAnomaly(x, y);
+};
+
+// triggerCosmicAnomaly();
 
 /***/ })
 

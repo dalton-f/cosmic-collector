@@ -10,8 +10,15 @@
     <script src="/public/js/app.js" defer></script>
   </head>
   <body>
-    <main>
-      <canvas id="canvas-background"></canvas>
+    <main class="grid">
+      <canvas
+        id="canvas-background"
+        class="row-span-full col-span-full"
+      ></canvas>
+
+      <div class="row-span-full col-span-full z-50 text-white p-12">
+        <button class="w-[50px] h-[60px]">click me please</button>
+      </div>
     </main>
   </body>
 </html>
