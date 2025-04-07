@@ -38,6 +38,8 @@ var generateStars = function generateStars(count) {
 generateStars(BACKGROUND_STAR_COUNT);
 var MIN_ANOMALY_SEGMENTS = 4;
 var MAX_ANOMALY_SEGMENTS = 7;
+var ANOMALY_GROW_RATE = 0.03;
+var ANOMALY_BLUR = "5px";
 var drawCosmicAnomaly = function drawCosmicAnomaly(x, y) {
   var anomalyMaxSize = Math.random() * 50 + 30;
   var anomalyColor = "rgb(".concat(Math.random() * 255, ", ").concat(Math.random() * 255, ", ").concat(Math.random() * 255, ")");
@@ -45,8 +47,8 @@ var drawCosmicAnomaly = function drawCosmicAnomaly(x, y) {
 
   // Animates the anomaly to grow in size
   var _growIn = function growIn() {
-    currentSize += anomalyMaxSize * 0.03;
-    ctx.filter = "blur(5px)";
+    currentSize += anomalyMaxSize * ANOMALY_GROW_RATE;
+    ctx.filter = "blur(".concat(ANOMALY_BLUR, ")");
     ctx.beginPath();
 
     // Generate a random amount of sides between 4 and 7 for each anomaly
@@ -73,12 +75,12 @@ var drawCosmicAnomaly = function drawCosmicAnomaly(x, y) {
 
 // Draw a cosmic anomaly on a random point of the canvas
 var triggerCosmicAnomaly = function triggerCosmicAnomaly() {
-  var x = Math.random() * backgroundCanvas.width;
-  var y = Math.random() * backgroundCanvas.height;
+  var margin = 150;
+  var x = Math.random() * (backgroundCanvas.width - 2 * margin) + margin;
+  var y = Math.random() * (backgroundCanvas.height - 2 * margin) + margin;
   drawCosmicAnomaly(x, y);
 };
-
-// triggerCosmicAnomaly();
+triggerCosmicAnomaly();
 
 /***/ })
 
