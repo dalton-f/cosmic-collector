@@ -1,23 +1,55 @@
-<!DOCTYPE html>
-<html class="antialiased bg-black" lang="en">
+<!doctype html>
+<html class="font-montserrat bg-black antialiased select-none" lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cosmic Collector</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
 
     <link rel="stylesheet" href="/public/css/app.css" />
 
     <script src="/public/js/app.js" defer></script>
   </head>
   <body>
-    <main class="grid">
-      <canvas
-        id="canvas-background"
-        class="row-span-full col-span-full"
-      ></canvas>
+    <main class="grid text-2xl">
+      <canvas id="canvas-background" class="col-span-full row-span-full">
+      </canvas>
 
-      <div class="row-span-full col-span-full z-50 text-white p-12">
-        <button class="w-[50px] h-[60px]">click me please</button>
+      <div
+        class="col-span-full row-span-full flex flex-col justify-between p-12 text-white"
+      >
+        <div class="grid grid-cols-3 items-center">
+          <button class="max-w-fit" aria-label="Help">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+              width="32"
+              height="32"
+            >
+              <path
+                fill="#fff"
+                d="M464 256a208 208 0 1 0-416 0 208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0 256 256 0 1 1-512 0zm169.8-90.7c7.9-22.3 29.1-37.3 52.8-37.3h58.3c34.9 0 63.1 28.3 63.1 63.1 0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6-13.3 0-24-10.7-24-24v-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1 0-8.4-6.8-15.1-15.1-15.1h-58.3c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1-64 0z"
+              />
+            </svg>
+          </button>
+          <p
+            class="justify-self-center text-4xl font-semibold tracking-wider"
+            id="stardust-count"
+          >
+            0
+          </p>
+        </div>
+        <div class="flex items-center justify-center gap-16">
+          <button>upgrades</button>
+          <button id="clicker-button">click me please</button>
+          <button>prestige</button>
+        </div>
       </div>
     </main>
   </body>
