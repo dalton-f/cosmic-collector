@@ -25,7 +25,11 @@
         class="col-span-full row-span-full flex flex-col justify-between p-12 text-white"
       >
         <div class="grid grid-cols-3 items-center">
-          <button class="max-w-fit" aria-label="Help">
+          <button
+            class="max-w-fit cursor-pointer"
+            aria-label="Help"
+            id="help-button"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
@@ -45,10 +49,42 @@
             0
           </p>
         </div>
-        <div class="flex items-center justify-center gap-16">
-          <button>upgrades</button>
-          <button id="clicker-button">click me please</button>
-          <button>prestige</button>
+        <div class="flex items-center justify-center gap-24">
+          <button class="button cursor-pointer" id="upgrades-button">
+            upgrades
+          </button>
+          <button class="button cursor-pointer" id="clicker-button">
+            click me
+          </button>
+          <button class="button cursor-pointer" id="reset-button">
+            cosmic reset
+          </button>
+
+          <!-- shop example -->
+
+          <aside>
+            <ul class="flex flex-col items-end gap-8">
+              <li class="flex items-center gap-4 text-xl">
+                <div class="flex flex-col gap-2 text-right">
+                  <p>[lvl 832] stardust harvester</p>
+
+                  <p>1250 stardust</p>
+                </div>
+
+                <button class="button">buy</button>
+              </li>
+
+              <li class="flex items-center gap-4 text-xl">
+                <div class="flex flex-col gap-2 text-right">
+                  <p>[lvl 3271] quantum entangler</p>
+
+                  <p>315801 stardust</p>
+                </div>
+
+                <button class="button">buy</button>
+              </li>
+            </ul>
+          </aside>
         </div>
       </div>
     </main>
