@@ -20,66 +20,21 @@ const generateStars = (count) => {
 
 generateStars(BACKGROUND_STAR_COUNT);
 
-const MIN_ANOMALY_SEGMENTS = 4;
-const MAX_ANOMALY_SEGMENTS = 7;
+let stardust = 0;
 
-const ANOMALY_GROW_RATE = 0.03;
-const ANOMALY_BLUR = "5px";
+const CLICKABLE_BUTTON = document.getElementById("clicker-button");
+const STARDUST_COUNT = document.getElementById("stardust-count");
 
-const drawCosmicAnomaly = (x, y) => {
-  const anomalyMaxSize = Math.random() * 50 + 30;
-  const anomalyColor = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${
-    Math.random() * 255
-  })`;
+const helpButton = document.getElementById("help-button");
 
-  let currentSize = 0;
+CLICKABLE_BUTTON.addEventListener("click", () => {
+  stardust++;
 
-  // Animates the anomaly to grow in size
-  const growIn = () => {
-    currentSize += anomalyMaxSize * ANOMALY_GROW_RATE;
-    ctx.filter = `blur(${ANOMALY_BLUR})`;
+  console.log(`Stardust collected: ${stardust}`);
 
-    ctx.beginPath();
+  STARDUST_COUNT.innerHTML = stardust;
+});
 
-    // Generate a random amount of sides between 4 and 7 for each anomaly
-    const segments =
-      Math.floor(
-        Math.random() * (MAX_ANOMALY_SEGMENTS - MIN_ANOMALY_SEGMENTS + 1)
-      ) + MIN_ANOMALY_SEGMENTS;
-
-    // Create a random shape by drawing lines to random points
-    for (let i = 0; i < segments; i++) {
-      const angle = (i / segments) * 2 * Math.PI;
-      // Vary the radius
-      const radius = Math.random() * currentSize;
-
-      const pointX = x + Math.cos(angle) * radius;
-      const pointY = y + Math.sin(angle) * radius;
-
-      if (i === 0) ctx.moveTo(pointX, pointY);
-      else ctx.lineTo(pointX, pointY);
-    }
-
-    ctx.closePath();
-
-    // Fill the shape with the anomaly color
-    ctx.fillStyle = anomalyColor;
-    ctx.fill();
-
-    if (currentSize < anomalyMaxSize) requestAnimationFrame(growIn);
-  };
-
-  growIn();
-};
-
-// Draw a cosmic anomaly on a random point of the canvas
-const triggerCosmicAnomaly = () => {
-  const margin = 150;
-
-  const x = Math.random() * (backgroundCanvas.width - 2 * margin) + margin;
-  const y = Math.random() * (backgroundCanvas.height - 2 * margin) + margin;
-
-  drawCosmicAnomaly(x, y);
-};
-
-triggerCosmicAnomaly();
+helpButton.addEventListener("click", () => {
+  console.log("Help button clicked!");
+});

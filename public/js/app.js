@@ -80,7 +80,18 @@ var triggerCosmicAnomaly = function triggerCosmicAnomaly() {
   var y = Math.random() * (backgroundCanvas.height - 2 * margin) + margin;
   drawCosmicAnomaly(x, y);
 };
-triggerCosmicAnomaly();
+var stardust = 0;
+var CLICKABLE_BUTTON = document.getElementById("clicker-button");
+var STARDUST_COUNT = document.getElementById("stardust-count");
+var helpButton = document.getElementById("help-button");
+CLICKABLE_BUTTON.addEventListener("click", function () {
+  stardust++;
+  console.log("Stardust collected: ".concat(stardust));
+  STARDUST_COUNT.innerHTML = stardust;
+});
+helpButton.addEventListener("click", function () {
+  console.log("Help button clicked!");
+});
 
 /***/ })
 
